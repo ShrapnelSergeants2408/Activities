@@ -12,16 +12,16 @@ public static void main(String args[]){
     }
     public double findA(double B, double C){
         double A = Math.pow(C,2) - Math.pow(B,2);
-        A = Math.pow(A,1/2);
+        A = Math.pow(A,1.0/2);
         return A; 
     }
     public double findB(double A, double C){
         double B = Math.pow(C,2) - Math.pow(A,2);
-        B = Math.pow(B,1/2);
+        B = Math.pow(B,1.0/2);
         return B; 
     }
     public double findC(double A, double B){
         double C = Math.pow(A,2) + Math.pow(B,2);
-        C = Math.pow(C,1/2);
+        C = Math.pow(C,1.0/2);
         return C; 
     }
