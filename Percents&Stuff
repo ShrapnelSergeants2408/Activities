@@ -1,0 +1,27 @@
+public static void main(Strings args[]){
+        Scanner sys = new Scanner(System.in);
+        System.out.println("Insert your sales tax (in decimal format).")
+        double tax = Double.valueOf(sys.nextLine());
+        System.out.println("Insert your mark up (in decimal format).")
+        double markup = Double.valueOf(sys.nextLine());
+        System.out.println("Insert your discount % (0 if none).")
+        double discount = Double.valueOf(sys.nextLine());
+        System.out.println("Insert your base cost (in decimal format).")
+        double cost = Double.valueOf(sys.nextLine());
+        // Print the result
+    }
+    public double findA(double B, double C){
+        double A = Math.pow(C,2) - Math.pow(B,2);
+        A = Math.pow(A,1/2);
+        return A; 
+    }
+    public double findB(double A, double C){
+        double B = Math.pow(C,2) - Math.pow(A,2);
+        B = Math.pow(B,1/2);
+        return B; 
+    }
+    public double findC(double A, double B){
+        double C = Math.pow(A,2) + Math.pow(B,2);
+        C = Math.pow(C,1/2);
+        return C; 
+    }
