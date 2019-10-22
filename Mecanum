@@ -1,0 +1,62 @@
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import java.lang.Math;
+@TeleOp
+public class FTCTeleOP extends OpMode {
+    DcMotor FLM,FRM,BLM,BRM;
+    double leftx,lefty,rightx,righty;
+    @Override
+    public void init(){
+        FLM = hardwareMap.dcMotor.get("FLM");
+        FRM = hardwareMap.dcMotor.get("FRM");
+        BLM = hardwareMap.dcMotor.get("BLM");
+        BRM = hardwareMap.dcMotor.get("BRM");
+        FLM.setDirection(DcMotor.Direction.REVERSE);
+        BRM.setDirection(DcMotor.Direction.REVERSE);
+
+    }
+
+    @Override
+    public void loop(){
+        leftx = gamepad1.left_stick_x;
+        lefty = gamepad1.left_stick_y;
+        rightx = gamepad1.left_stick_x;
+        righty = gamepad1.left_stick_y;
+        double max = Math.sqrt(Math.pow (1,2) + Math.pow(1,2));
+        double speed = Math.sqrt(Math.pow(leftx,2)+Math.pow(lefty,2));
+        speed=speed/max;
+        telemetry.addData("Speed",speed);
+        if(leftx>0){
+            if(lefty>0){//Up Right
+                stopbot();
+                FLM.setPower(speed);
+                BRM.setPower(speed);
+            }else{//Down Right
+                stopbot();
+                FLM.setPower(-speed);
+                BRM.setPower(-speed);
+            }
+        } else{
+            if(lefty>0){//Up Left
+                stopbot();
+                FRM.setPower(speed);
+                BLM.setPower(speed);
+            }else{//Down Left
+                stopbot();
+                FRM.setPower(-speed);
+                FLM.setPower(-speed);
+            }
+        }
+        telemetry.update();
+    }
+    public void stopbot(){
+        FLM.setPower(0);
+        FRM.setPower(0);
+        BLM.setPower(0);
+        BRM.setPower(0);
+    }
+}
